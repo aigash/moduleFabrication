@@ -1,0 +1,63 @@
+/* GENERAL CONFIG VARIABLES */
+
+:root {
+    --font-titre:'Montserrat', sans-serif !important;
+    --font-corps:'Hanken Grotesk', sans-serif !important;
+
+    --light-blue:rgb(53,211,210);
+    --dark-blue:rgb(11,72,157);
+    --orange-bellon:rgb(254,95,0);
+    --ligth-gray:rgb(245,245,245);
+    --gray:rgb(114,120,126);
+    --yellow: rgb(255,213,7);
+    --red: rgb(255,0,0);
+    --green:#5CFF58;
+    --blanc-active : rgba(220,220,220,0.6);
+
+    --dblue-active:rgba(10,65,142);
+    --lblue-active:rgba(50,199,198);
+    --orange-active:rgba(233,87,0);
+
+    --shadow-20: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*FOOTER*/
+footer {
+    background-color:white;
+    padding:32px 90px;
+}
+footer>div {
+    justify-content:space-between;
+    align-items:center;
+    display:flex;
+}
+footer p {
+    color: var(--dark-blue);
+    font-weight:600;
+    margin-bottom:0;
+    font-family: 'Montserrat', sans-serif;
+}
+footer p span {
+    color: var(--light-blue);
+}
+footer img {
+    height:46px;
+}
+footer img:first-child {
+    margin-right:50px;
+}
+
+/*RESPONSIVE FOOTER*/
+@media (max-width: 768px) {
+    footer {
+        padding:15px;
+    }
+    footer>div {
+        flex-direction:column;
+    }
+    footer p {
+        margin-bottom:15px;
+    }
+}
