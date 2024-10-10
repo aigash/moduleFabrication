@@ -33,10 +33,10 @@ function today(id) {
 function table(id, css, data, title) {
     let html = `<table class="${css}" id="${id}">
                     <thead>
-                        <tr><th colspan="${data.thead.length}">${title}</th></tr>
+                        <tr><th colspan="${data.thead.length}" class='titleTable'>${title}</th></tr>
                         <tr>`;
     data.thead.forEach(val => {
-        html += `<th>${val}</th>`;
+        html += `<th class="${val.css}">${val.lib}</th>`;
     });
 
     html += `</tr>
@@ -46,7 +46,7 @@ function table(id, css, data, title) {
     data.tbody.forEach(val => {
         html += `<tr>`;
         val.forEach(val2 => {
-            html += `<td>${val2}</td>`;
+            html += `<td class="${val2.css}">${val2.data}</td>`;
         });
         html += `</tr>`;
     });
@@ -55,7 +55,3 @@ function table(id, css, data, title) {
 
     return html;
 }
-
-
-
-

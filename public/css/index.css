@@ -20,15 +20,13 @@ body{
 .entete {
     padding:15px;
     border-radius:10px;
+    margin-bottom:1.5em;
 }
 .entete button, .entete select {
     height:40px;
     border-radius:5px;
 }
-.entete button {
-    font-size:18px;
-}
-.entete label, .entete select {
+.entete button, .entete label, .entete select {
     font-size:16px;
 }
 .entete label, .entete button {
@@ -51,241 +49,30 @@ body{
 .blocs {
     display:flex;
     flex-wrap:wrap;
-    gap:1em;
+    gap:1.5em 1%;
 }
 .bloc {
-    width:50%;
+
+}
+.bloc-left {
+    width:59%;
+}
+.bloc-right {
+    width:40%;
 }
 
-.cursorP {cursor:pointer;}
+/* TABLES */
+.titleTable {
+    font-size:16px;
+    color: var(--light-blue);
+    padding-top:8px;
+}
+.sgTable thead tr:nth-child(2) th {
+    padding-bottom:8px;
+}
+/* TABLE À FABRIQUER */
 
-.nombre {text-align:end;}
-
-.box {
-    padding:20px 30px;
-    border-radius:10px;
-}
-
-/* TABLE */
-.sgTable {border-radius:10px; overflow:hidden; width:100%;}
-.sgTable thead {
-    border-radius: 10px 10px 0 0;
-    background-color: var(--dark-blue) !important;
-    color: white;
-    height:60px;
-}
-.sgTable thead tr {
-    border-bottom: 1px solid rgba(11,72,157,0.5);
-    background-color:transparent;
-}
-.sgTable thead th {
-    background-color:transparent;
-    padding:0 20px;
-}
-.sgTable tbody {background-color:white;}
-.sgTable tbody td {
-    padding:15px 20px;
-}
-
-/* INPUT */
-.input30 {
-    height:30px;
-    min-height:30px;
-    padding:0 10px;
-}
-.input40 {
-    height:40px;
-    min-height:40px;
-    padding:0 15px;
-}
-.input50 {
-    height:50px;
-    min-height:50px;
-    padding:0 15px;
-}
-input {
-    border:1px solid #ccc;
-    background-color:white;
-    border-radius:5px;
-}
-select {
-    appearance: none;
-    background: url(../img/select.svg) rgba(255,255,255,0.15) !important;
-    background-position:98% center !important;
-    background-repeat: no-repeat !important;
-    background-size:25px !important;
-}
-
-input:focus, select:focus {
-    box-shadow: 0 0 0 0.25rem rgba(53,211,210,0.2) !important;
-    outline: 0 !important;
-}
-.glass input:focus, .glass select:focus {
-    box-shadow: 0 0 0 0.25rem rgba(255,255,255,0.25) !important;
-    outline: 0 !important;
-}
-input[type='radio']:focus, input[type='checkbox']:focus {
-    box-shadow:none !important;
-}
-
-/* BUTTONS */
-.sgBtn, .sgBtnT {
-    background-color:var(--dark-blue);
-    color:white;
-    border-radius:5px;
-    border:0;
-    height:40px;
-    width:200px;
-}
-.sgBtn:hover, .sgBtn:active, .sgBtnT:target, .sgBtnT:active {
-    background-color:var(--dblue-active);
-}
-.sgBtnT:target {
-    background-color:var(--dblue-active);
-}
-.sgBtnBlanc, .sgBtnBlancT {
-    background-color:white;
-    color:var(--dark-blue);
-    border-radius:5px;
-    border:1px solid var(--dark-blue);
-    height:40px;
-    width:200px;
-}
-.sgBtnBlanc:hover, .sgBtnBlanc:active, .sgBtnBlancT:target, .sgBtnBlancT:active {
-    background-color: var(--blanc-active);
-}
-.sgBtnCancel, .sgBtnCancelT {
-    background-color:var(--orange-bellon);
-    color:white;
-    border-radius:5px;
-    border:0;
-    height:40px;
-    width:200px;
-}
-.sgBtnCancel:hover, .sgBtnCancel:active, .sgBtnCancelT:target, .sgBtnCancelT:active {
-    background-color:var(--orange-active);
-}
-.sgBtnHelp {
-    background-color:white;
-    width:40px;
-    height:40px;
-    border-radius:4px;
-    border:0;
-}
-
-.toggle {
-    display:flex;
-}
-.toggle input {
-    display: none;
-}
-.toggle label {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 25px;
-    background-color: #e1e1e1;
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.1);
-    border: 0.5px solid #eee;
-    -webkit-tap-highlight-color: transparent;
-}
-.toggle label:before {
-    content: "";
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    height: 30px;
-    width: 30px;
-    background-color: #fff;
-    border-radius: 46px;
-    box-shadow: 0.5px 0.5px 1px 0px #00000080;
-    transition: box-shadow 0.3s ease-in-out;
-    animation: moveLeft 0.3s ease-in-out;
-    border:0.5px solid #EEE;
-}
-.toggle input:checked + label:before {
-    transform: translateX(25px);
-    animation: moveRight 0.3s ease-in-out;
-}
-.toggle input:checked + label {
-    background-color:#35D3D2;
-}
-@keyframes moveRight {
-    0% {
-      width: 32px;
-      transform: translateX(0);
-    }
-    45% {
-      width: 38px;
-    }
-    100% {
-      width: 32px;
-      transform: translateX(25px);
-    }
-}
-@keyframes moveLeft {
-    0% {
-      width: 32px;
-      transform: translateX(25px);
-    }
-    45% {
-      width: 38px;
-    }
-    100% {
-      width: 32px;
-      transform: translateX(0);
-    }
-}
-
-
-.glass {
-    border: 1px solid rgba(255, 255, 255, 0.70) !important;
-    background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(25px) !important;
-}
-.btnGlass {
-    border: 1px solid rgba(255, 255, 255, 0.70) !important;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(25px);
-    width:200px;
-    height:40px;
-    color:black;
-    border-radius:5px;
-}
-.inputGlass {
-	border: 1px solid rgba(255, 255, 255, 0.70) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(25px) !important;
-}
-
-/* glassmorphism sur fond blanc */
-.glassB {
-    border: 1px solid rgba(255, 255, 255, 0.70);
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(25px);
-    box-shadow: 0px 4px 30px 0px rgba(11, 72, 157, 0.15);
-}
-
-/* width */
-.w100 {width:100%;}
-.w75 {width:75%;}
-.w50 {width:50%;}
-.w45 {width:45%;}
-.w30 {width:30%;}
-.w25 {width:25%;}
-
-.btnEdit {
-    width: 35px;
-    height:35px;
-    border-radius:5px;
-    background-color: var(--dark-blue);
-    border:none;
-}
-/*Confirmation*/
-
-.jconfirm-box {
-    width: 30vw;
+#bloc-btn button {
+    font-weight:500;
+    font-size:16px;
 }
