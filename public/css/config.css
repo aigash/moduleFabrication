@@ -22,6 +22,8 @@
 }
 .cursorP {cursor:pointer;}
 
+.nombre {text-align:right;}
+
 /* width */
 .w100 {width:100%;}
 .w75 {width:75%;}

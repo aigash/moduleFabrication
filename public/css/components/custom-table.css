@@ -1,4 +1,4 @@
-.sgTable {border-radius:10px; overflow:hidden; width:100%;}
+.sgTable {border-radius:10px; overflow:hidden; width:100%; border-collapse:collapse;}
 .sgTable thead {
     border-radius: 10px 10px 0 0;
     background-color: var(--dark-blue) !important;
@@ -13,6 +13,7 @@
     background-color:transparent;
     padding-left:15px;
     padding-right:15px;
+    text-align:left;
 }
 .sgTable tbody {background-color:white;}
 .sgTable tbody td {

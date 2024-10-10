@@ -61,7 +61,6 @@ let dataFabr = {
         }
     ]
 };
-//fabr.innerHTML = table('tableFabr', 'sgTable', dataFabr, 'À Fabriquer');
 
 let dataStkTheo = {
     thead: [
@@ -77,7 +76,6 @@ let dataStkTheo = {
         
     ]
 };
-//stkTheo.innerHTML = table('tableStkTheo', 'sgTable', dataStkTheo, 'Stock Théorique');
 
 let dataDetailCmd = {
     thead: [
@@ -98,7 +96,6 @@ let dataDetailCmd = {
         
     ]
 }
-//detailCmd.innerHTML = table('tableDetailCmd', 'sgTable', dataDetailCmd, 'Détail commande');
 
 let dataStkCuve = {
     thead: [
@@ -114,7 +111,6 @@ let dataStkCuve = {
         
     ]
 }
-//stkCuve.innerHTML = table('tableStkCuve', 'sgTable', dataStkCuve, 'Stock Cuve');
 
 function updateTableData(tableId, data) {
     const table = document.getElementById(tableId);

@@ -5,13 +5,6 @@ class CustomTable extends HTMLElement {
     }
 
     connectedCallback() {
-        const style = document.createElement('style');
-        style.textContent = `
-            @import url('public/css/config.css');
-            @import url('public/css/components/custom-table.css');
-            `;
-        
-        this.shadowRoot.appendChild(style);
         this.render();
     }
 
@@ -75,6 +68,13 @@ class CustomTable extends HTMLElement {
         // Effacer le contenu précédent et ajouter le nouveau tableau
         this.shadowRoot.innerHTML = '';
         this.shadowRoot.appendChild(table);
+        const style = document.createElement('style');
+        style.textContent = `
+            @import url('css/config.css');
+            @import url('css/components/custom-table.css');
+            `;
+        
+        this.shadowRoot.appendChild(style);
     }
 }
 
