@@ -1,0 +1,29 @@
+.sgTable {border-radius:10px; overflow:hidden; width:100%;}
+.sgTable thead {
+    border-radius: 10px 10px 0 0;
+    background-color: var(--dark-blue) !important;
+    color: white;
+    height:60px;
+}
+.sgTable thead tr {
+    border-bottom: 1px solid rgba(11,72,157,0.5);
+    background-color:transparent;
+}
+.sgTable thead th {
+    background-color:transparent;
+    padding-left:15px;
+    padding-right:15px;
+}
+.sgTable tbody {background-color:white;}
+.sgTable tbody td {
+    padding:5px 15px;
+}
+
+.titleTable {
+    font-size:16px;
+    color: var(--light-blue);
+    padding-top:8px;
+}
+.sgTable thead tr:nth-child(2) th {
+    padding-bottom:8px;
+}

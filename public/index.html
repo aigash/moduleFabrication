@@ -9,6 +9,7 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' *;">
     <!--CSS-->
     <link rel="stylesheet" href="css/config.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <!--BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -23,80 +24,90 @@
     <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <!--JQUERY CONFIRM-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  </head>
 
-    <body>
-      <!--HTML PART -->
-      <main id="page-desktop" role="main" class="container-fluid">
-        <div class="entete d-flex justify-content-between bg-light">
+  <body>
+    <!--HTML PART -->
+    <main id="page-desktop" role="main" class="container-fluid">
+      <div class="entete d-flex justify-content-between bg-light">
+        <div>
+          <label class="d-block">Machine</label>
+          <select id="selectMac">
+            <option>STOCK Machine 1</option>
+          </select>
+        </div>
+        <div class="d-flex align-items-end gap-3">
+          <button id="btnImpBL" class="sgBtnBlanc"><img src="img/icons/impression.svg">
+            BL</button>
+          <button id="btnVisuCmd" class="sgBtn">Visualiser commandes</button>
+        </div>
+      </div>
+
+      <div class="blocs">
+        <div class="bloc bloc-left" id="fabr">
+          <custom-table id="tableFabr" css="sgTable" title="À Fabriquer"></custom-table>
+        </div>
+
+        <div class="bloc bloc-right" id="stkTheo">
+          <custom-table id="tableStkTheo" css="sgTable" title="Stock Théorique"></custom-table>
+        </div>
+
+        <div class="bloc bloc-left" id="detailCmd">
+          <custom-table id="tableDetailCmd" css="sgTable" title="Détail commande"></custom-table>
+        </div>
+
+        <div class="bloc bloc-right" id="stkCuve">
+          <custom-table id="tableStkCuve" css="sgTable" title="Stock Cuve"></custom-table>
+        </div>
+
+        <div class="bloc bloc-left bg-light radius-10 p-15" id="conditionnement">
           <div>
-            <label class="d-block">Machine</label>
-            <select id="selectMac">
-              <option>STOCK Machine 1</option>
-            </select>
-          </div>
-          <div class="d-flex align-items-end gap-3">
-            <button id="btnImpBL" class="sgBtnBlanc"><img src="img/icons/impression.svg">
-              BL</button>
-            <button id="btnVisuCmd" class="sgBtn">Visualiser commandes</button>
-          </div>
-        </div>
-
-        <div class="blocs">
-          <div class="bloc bloc-left" id="fabr"></div>
-
-          <div class="bloc bloc-right" id="stkTheo"></div>
-
-          <div class="bloc bloc-left" id="detailCmd"></div>
-
-          <div class="bloc bloc-right" id="stkCuve"></div>
-
-          <div class="bloc bloc-left bg-light radius-10 p-15" id="conditionnement">
-            <div>
-              <h3>Conditionnement à l'avance</h3>
-              <div class="grpBtn">
-                <button></button>
-                <button></button>
-                <button></button>
-              </div>
-            </div>
-
-            <div>
-              <div></div>
-              <div></div>
-            </div>
-
-            <div>
-              <div></div>
-              <div></div>
+            <h3>Conditionnement à l'avance</h3>
+            <div class="grpBtn">
+              <button></button>
+              <button></button>
+              <button></button>
             </div>
           </div>
-          <div class="bloc bloc-right bg-light radius-10 p-15" id="bloc-btn">
-            <div class='d-flex justify-content-evenly'>
-              <button class='sgBtnBlanc'>Ajouter Stock</button>
-              <button class='sgBtnSecond'>Valider Palette</button>
-            </div>
-            <div class='d-flex justify-content-evenly'>
-              <button class='sgBtnBlanc'>Ajouter Stock</button>
-              <button class='sgBtn'>Finir Fabrication</button>
-            </div>
+
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <div>
+            <div></div>
+            <div></div>
           </div>
         </div>
-      </main>
+        <div class="bloc bloc-right bg-light radius-10 p-15" id="bloc-btn">
+          <div class='d-flex justify-content-evenly'>
+            <button class='sgBtnBlanc'>Ajouter Stock</button>
+            <button class='sgBtnSecond'>Valider Palette</button>
+          </div>
+          <div class='d-flex justify-content-evenly'>
+            <button class='sgBtnBlanc'>Ajouter Stock</button>
+            <button class='sgBtn'>Finir Fabrication</button>
+          </div>
+        </div>
+      </div>
 
-      <!--JAVASCRIPT PART-->
-      <script></script>
+    </main>
+    <!--JAVASCRIPT PART-->
+    <script></script>
 
-      <!-- BOOTSTRAP -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-      <!--JQUERY-->
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-      <!--JQUERY CONFIRM-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-      <!--JS-->
-      <script type='text/javascript' src='js/config.js'></script>
-      <script type='text/javascript' src='js/ajax.js'></script>
-      <script type='text/javascript' src='js/lib.js'></script>
-      <script type='text/javascript' src='js/script.js'></script>
-    </body>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!--JQUERY-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!--JQUERY CONFIRM-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <!--JS-->
+    <script type='text/javascript' src='js/config.js'></script>
+    <script type='text/javascript' src='js/ajax.js'></script>
+    <script type='text/javascript' src='js/lib.js'></script>
+    <script type='text/javascript' src='js/script.js'></script>
+    <script type='text/javascript' src="../src/components/Tableau.js"></script>
+  </body>
 
-  </html>
+</html>
