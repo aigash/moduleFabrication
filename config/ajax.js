@@ -1,5 +1,3 @@
-const config = require('./config/config');
-
 function ajaxBuildSettings(_url, _data, method = 'PUT') {
   if(_data===undefined)
     var _req ;

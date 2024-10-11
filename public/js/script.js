@@ -66,7 +66,7 @@ let dataStkTheo = {
     thead: [
         {lib: "Ent.", css: ""},
         {lib: "Article", css: ""},
-        {lib: "Stock en kg", css: ""}
+        {lib: "Stock en kg", css: "nombre"}
     ],
     tbody: [
         [{data: "Mar", css: ""}, {data: "AIL5 AIL BLANC VRAC IF43146kg VRAC", css: ""}, {data: 3224.00, css: "nombre"}],
@@ -79,13 +79,13 @@ let dataStkTheo = {
 
 let dataDetailCmd = {
     thead: [
-        { lib: "N° BL", css: "" },
+        { lib: "N° BL", css: "nombre" },
         { lib: "Code", css: "" },
         { lib: "Article", css: "" },
         { lib: "Emb", css: "" },
-        { lib: "Pal", css: "" },
+        { lib: "Pal", css: "nombre" },
         { lib: "T. pal.", css: "" },
-        { lib: "Qté", css: "" },
+        { lib: "Qté", css: "nombre" },
         { lib: "U", css: "" }
     ],
     tbody: [

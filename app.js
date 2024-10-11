@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
     }
 }));
 app.use('/src', express.static(path.join(__dirname, 'src')));
+app.use('/config', express.static(path.join(__dirname, 'config')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

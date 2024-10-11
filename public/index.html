@@ -37,9 +37,9 @@
           </select>
         </div>
         <div class="d-flex align-items-end gap-3">
-          <button id="btnImpBL" class="sgBtnBlanc"><img src="img/icons/impression.svg">
+          <button id="btnImpBL" class="sgBtnBlanc sgBtn"><img src="img/icons/impression.svg">
             BL</button>
-          <button id="btnVisuCmd" class="sgBtn">Visualiser commandes</button>
+          <button id="btnVisuCmd" class="sgBtnPrimary sgBtn">Visualiser commandes</button>
         </div>
       </div>
 
@@ -61,33 +61,65 @@
         </div>
 
         <div class="bloc bloc-left bg-light radius-10 p-15" id="conditionnement">
-          <div>
+          <div class="d-flex justify-content-between">
             <h3>Conditionnement à l'avance</h3>
             <div class="grpBtn">
-              <button></button>
-              <button></button>
-              <button></button>
+              <button class="iconBtn sgBtnPrimary sgBtnS30"><i class="fa-solid fa-plus"></i></button>
+              <button class="iconBtn sgBtnSecond sgBtnS30 desac"><i class="fa-solid fa-check"></i></button>
+              <button class="iconBtn sgBtnCancel sgBtnS30 desac"><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
 
-          <div>
-            <div></div>
-            <div></div>
+          <div class="d-flex justify-content-between">
+            <div class="w49">
+                <label>Article</label>
+                <div class="d-flex">
+                    <input type="text" class="input40 inputDesac w25 radius-left-5 border-right-0" id="codeArt">
+                    <input type="text" class="input40 inputDesac w75 radius-right-5" id="libArt">
+                </div>
+            </div>
+
+            <div class="w49">
+                <label>Emballage</label>
+                <div class="d-flex">
+                    <input type="text" class="input40 inputDesac w25 radius-left-5 border-right-0" id="codeEmb">
+                    <input type="text" class="input40 inputDesac w75 radius-right-5" id="libEmb">
+                </div>
+            </div>
           </div>
 
-          <div>
-            <div></div>
-            <div></div>
+          <div class="d-flex justify-content-between">
+            <div class="w49">
+                <label>Palette</label>
+                <div class="d-flex">
+                    <input type="text" class="input40 inputDesac w25 radius-left-5 border-right-0" id="codePal">
+                    <input type="text" class="input40 inputDesac w75 radius-right-5" id="libPal">
+                </div>
+            </div>
+            <div class="d-flex w49 justify-content-between">
+                <div class="w32 d-flex flex-column">
+                    <label>Nb Palette</label>
+                    <input type="number" class="input40 inputDesac" id="nbPal">
+                </div>
+                <div class="w32 d-flex flex-column">
+                    <label>Nb Clis</label>
+                    <input type="number" class="input40 inputDesac" id="nbCol">
+                </div>
+                <div class="w32 d-flex flex-column">
+                    <label>Poids</label>
+                    <input type="number" class="input40 inputDesac" id="poids">
+                </div>
+            </div>
           </div>
         </div>
-        <div class="bloc bloc-right bg-light radius-10 p-15" id="bloc-btn">
+        <div class="bloc bloc-right bg-light radius-10 p-15 d-flex flex-column justify-content-center gap-4" id="bloc-btn">
           <div class='d-flex justify-content-evenly'>
-            <button class='sgBtnBlanc'>Ajouter Stock</button>
-            <button class='sgBtnSecond'>Valider Palette</button>
+            <button class='sgBtnBlanc sgBtn'>Ajouter Stock</button>
+            <button class='sgBtnSecond sgBtn'>Valider Palette</button>
           </div>
           <div class='d-flex justify-content-evenly'>
-            <button class='sgBtnBlanc'>Ajouter Stock</button>
-            <button class='sgBtn'>Finir Fabrication</button>
+            <button class='sgBtnBlanc sgBtn'>Ajouter Commande</button>
+            <button class='sgBtnPrimary sgBtn'>Finir Fabrication</button>
           </div>
         </div>
       </div>
