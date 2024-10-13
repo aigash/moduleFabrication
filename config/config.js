@@ -7,6 +7,23 @@ const config = {
     },
 };
 
-const env = process.env.NODE_ENV || 'development';
+// Détermine l'environnement
+const getEnv = () => {
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV) {
+        return process.env.NODE_ENV;
+    }
+    return 'development';
+};
 
-module.exports = config[env];
+const env = getEnv();
+
+// Exporte la configuration
+const currentConfig = config[env];
+
+// Vérifie si nous sommes dans un environnement qui supporte module.exports (Node.js)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = currentConfig;
+} else {
+    // Si nous sommes dans un navigateur, on définit une variable globale
+    window.appConfig = currentConfig;
+}

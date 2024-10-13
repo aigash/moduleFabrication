@@ -1,4 +1,5 @@
 /* INPUT */
+.inputDesac {background-color:#EFEFEF;}
 .input30 {
     height:30px;
     min-height:30px;
@@ -7,7 +8,7 @@
 .input40 {
     height:40px;
     min-height:40px;
-    padding:0 15px;
+    padding:0 10px;
 }
 .input50 {
     height:50px;
@@ -21,7 +22,7 @@ input {
 }
 select {
     appearance: none;
-    background: url(../img/select.svg) rgba(255,255,255,0.15) !important;
+    background: url(../img/icons/select.svg) rgba(255,255,255,0.15) !important;
     background-position:98% center !important;
     background-repeat: no-repeat !important;
     background-size:25px !important;
