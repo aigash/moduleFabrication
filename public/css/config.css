@@ -20,22 +20,39 @@
 
     --shadow-20: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
 }
+
+.bg-dblue {background-color: var(--dark-blue)}
+.bg-lblue {background-color: var(--light-blue)}
+.bg-orange {background-color: var(--orange-active)}
+
 .cursorP {cursor:pointer;}
 
-.nombre {text-align:right;}
+.nombre {text-align:right !important;}
+
+.desac {opacity:0.3;}
 
 /* width */
 .w100 {width:100%;}
+.w49 {width:49%;}
 .w75 {width:75%;}
 .w50 {width:50%;}
 .w45 {width:45%;}
+.w32 {width:32%;}
 .w30 {width:30%;}
+.w28 {width:28%;}
 .w25 {width:25%;}
 
 .p-15 {padding:15px;}
 
+.border-left-0 {border-left:0;}
+.border-right-0 {border-right:0;}
+
 .radius-5 {border-radius:5px;}
+.radius-left-5  {border-radius: 5px 0 0 5px !important;}
+.radius-right-5 {border-radius: 0 5px 5px 0 !important;}
 .radius-10 {border-radius:10px;}
+.radius-left-10 {border-radius:10px 0 0 10px !important;}
+.radius-right-10 {border-radius:0 10px 10px 0 !important;}
 
 /*Confirmation*/
 

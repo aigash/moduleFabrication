@@ -36,15 +36,6 @@ body{
     width:300px;
     padding: 0 15px;
 }
-#btnImpBL {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:0.5em;
-}
-#btnImpBL img {
-    width:25px;
-}
 
 .blocs {
     display:flex;

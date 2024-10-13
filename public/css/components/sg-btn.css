@@ -1,0 +1,71 @@
+/* BUTTONS */
+.sgBtnPrimary, .sgBtnPrimaryT {
+    background-color:var(--dark-blue);
+    color:white;
+    border:0;
+}
+.sgBtnPrimary:hover, .sgBtnPrimary:active, .sgBtnPrimaryT:target, .sgBtnPrimaryT:active {
+    background-color:var(--dblue-active);
+}
+.sgBtnT:target {
+    background-color:var(--dblue-active);
+}
+.sgBtnBlanc, .sgBtnBlancT {
+    background-color:white;
+    color:var(--dark-blue);
+    border:1px solid var(--dark-blue);
+}
+.sgBtnBlanc:hover, .sgBtnBlanc:active, .sgBtnBlancT:target, .sgBtnBlancT:active {
+    background-color: var(--blanc-active);
+}
+.sgBtnCancel, .sgBtnCancelT {
+    background-color:var(--orange-bellon);
+    color:white;
+    border:0;
+}
+.sgBtnCancel:hover, .sgBtnCancel:active, .sgBtnCancelT:target, .sgBtnCancelT:active {
+    background-color:var(--orange-active);
+}
+.sgBtnSecond, .sgBtnSecondT {
+    background-color: var(--light-blue);
+    color:white;
+    border:0;
+}
+.sgBtnSecond:hover, .sgBtnSecond:active, .sgBtnSecondT:target, .sgBtnSecondT:active {
+    background-color:var(--lblue-active);
+}
+
+.sgBtnSecond img, .sgBtnSecondT img, .sgBtnBlanc img, .sgBtnBlancT img, .sgBtn img, .sgBtnT img, .sgBtnCancel img, .sgBtnCancelT img {
+    width:25px;
+}
+
+.sgBtnSecond , .sgBtnSecondT , .sgBtnBlanc , .sgBtnBlancT , .sgBtnPrimary , .sgBtnPrimaryT , .sgBtnCancel , .sgBtnCancelT {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.5em;
+    font-weight:500;
+    font-size: 16px;
+    border-radius:5px;
+}
+
+.sgBtn {
+    height:40px;
+    width:200px;
+}
+.sgBtnS30 {
+    height:30px;
+    width:30px;
+}
+.sgBtnS40 {
+    height:40px;
+    width:40px;
+}
+
+.sgBtnHelp {
+    background-color:white;
+    width:40px;
+    height:40px;
+    border-radius:4px;
+    border:0;
+}

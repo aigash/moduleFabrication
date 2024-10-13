@@ -37,36 +37,42 @@
           </select>
         </div>
         <div class="d-flex align-items-end gap-3">
-          <button id="btnImpBL" class="sgBtnBlanc"><img src="img/icons/impression.svg">
-            BL</button>
-          <button id="btnVisuCmd" class="sgBtn">Visualiser commandes</button>
+          <sg-btn id="btnImpBL" css="sgBtn sgBtnBlanc" onclick="console.log('test')"><img src="img/icons/impression.svg">
+            BL</sg-btn>
+          <sg-btn id="btnVisuCmd" css="sgBtn sgBtnPrimary" onclick="console.log('test')">Visualiser commandes</sg-btn>
         </div>
       </div>
 
       <div class="blocs">
         <div class="bloc bloc-left" id="fabr">
-          <custom-table id="tableFabr" css="sgTable" title="À Fabriquer"></custom-table>
+          <sg-table id="tableFabr" css="sgTable" title="À Fabriquer"></sg-table>
         </div>
 
         <div class="bloc bloc-right" id="stkTheo">
-          <custom-table id="tableStkTheo" css="sgTable" title="Stock Théorique"></custom-table>
+          <sg-table id="tableStkTheo" css="sgTable" title="Stock Théorique"></sg-table>
         </div>
 
         <div class="bloc bloc-left" id="detailCmd">
-          <custom-table id="tableDetailCmd" css="sgTable" title="Détail commande"></custom-table>
+          <sg-table id="tableDetailCmd" css="sgTable" title="Détail commande"></sg-table>
         </div>
 
         <div class="bloc bloc-right" id="stkCuve">
-          <custom-table id="tableStkCuve" css="sgTable" title="Stock Cuve"></custom-table>
+          <sg-table id="tableStkCuve" css="sgTable" title="Stock Cuve"></sg-table>
         </div>
 
         <div class="bloc bloc-left bg-light radius-10 p-15" id="conditionnement">
-          <div>
+          <div class="d-flex justify-content-between">
             <h3>Conditionnement à l'avance</h3>
             <div class="grpBtn">
-              <button></button>
-              <button></button>
-              <button></button>
+              <sg-btn css="iconBtn sgBtnPrimary sgBtnS30" onclick="console.log('test')">
+                <i class="fa-solid fa-plus"></i>
+              </sg-btn>
+              <sg-btn css="iconBtn sgBtnSecond sgBtnS30 desac" onclick="console.log('test')">
+                <i class="fa-solid fa-check"></i>
+              </sg-btn>
+              <sg-btn css="iconBtn sgBtnCancel sgBtnS30 desac" onclick="console.log('test')">
+                <i class="fa-solid fa-trash"></i>
+              </sg-btn>
             </div>
           </div>
 
@@ -80,14 +86,14 @@
             <div></div>
           </div>
         </div>
-        <div class="bloc bloc-right bg-light radius-10 p-15" id="bloc-btn">
+        <div class="bloc bloc-right bg-light radius-10 p-15 d-flex flex-column justify-content-center gap-4" id="bloc-btn">
           <div class='d-flex justify-content-evenly'>
-            <button class='sgBtnBlanc'>Ajouter Stock</button>
-            <button class='sgBtnSecond'>Valider Palette</button>
+            <sg-btn css="sgBtn sgBtnBlanc" onclick="console.log('test')">Ajouter Stock</sg-btn>
+            <sg-btn css="sgBtn sgBtnSecond" onclick="console.log('test')">Valider Palette</sg-btn>
           </div>
           <div class='d-flex justify-content-evenly'>
-            <button class='sgBtnBlanc'>Ajouter Stock</button>
-            <button class='sgBtn'>Finir Fabrication</button>
+            <sg-btn css="sgBtn sgBtnBlanc" onclick="console.log('test')">Ajouter Stock</sg-btn>
+            <sg-btn css="sgBtn sgBtnPrimary" onclick="console.log('test')">Finir Fabrication</sg-btn>
           </div>
         </div>
       </div>
@@ -107,7 +113,9 @@
     <script type='text/javascript' src='../config/ajax.js'></script>
     <script type='text/javascript' src='js/lib.js'></script>
     <script type='text/javascript' src='js/script.js'></script>
-    <script type='text/javascript' src="../src/components/Tableau.js"></script>
+    <script type="module" src="../src/components/Btn.js"></script>
+    <script type="module" src="../src/components/Table.js"></script>
+    <!--<script type='text/javascript' src="../src/components/Tableau.js"></script>-->
   </body>
 
 </html>
