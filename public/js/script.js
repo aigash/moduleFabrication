@@ -52,6 +52,78 @@ let dataFabr = {
                 onchange: "",
                 onkeydown: ""
             }
+        ],
+        [
+            {
+                data: "OIGNON BLANC MMP FIL500gx 10If4314 MMP ESPAGNE CAL.5070 CAT.1",
+                type: "",
+                css: "",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }, 
+            {
+                data: 170.00,
+                type: "",
+                css: "nombre",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }
+        ],
+        [
+            {
+                data: "AIL NOIR RS BOI2tX6CAR RS ESPAGNE cal.ND cat.",
+                type: "",
+                css: "",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }, 
+            {
+                data: 18.00, 
+                type: "",
+                css: "nombre",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }
+        ],
+        [
+            {
+                data: "OIGNON BLANC MMP FIL500gx 10If4314 MMP ESPAGNE CAL.5070 CAT.1",
+                type: "",
+                css: "",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }, 
+            {
+                data: 170.00,
+                type: "",
+                css: "nombre",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }
+        ],
+        [
+            {
+                data: "AIL NOIR RS BOI2tX6CAR RS ESPAGNE cal.ND cat.",
+                type: "",
+                css: "",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }, 
+            {
+                data: 18.00, 
+                type: "",
+                css: "nombre",
+                onclick: "",
+                onchange: "",
+                onkeydown: ""
+            }
         ]
     ],
     row: [
@@ -79,7 +151,7 @@ let dataStkTheo = {
 
 let dataDetailCmd = {
     thead: [
-        { lib: "N° BL", css: "nombre" },
+        { lib: "N° BL", css: "" },
         { lib: "Code", css: "" },
         { lib: "Article", css: "" },
         { lib: "Emb", css: "" },
@@ -89,8 +161,8 @@ let dataDetailCmd = {
         { lib: "U", css: "" }
     ],
     tbody: [
-        [{data: 11, css: "nombre"}, {data:"OIG4", css:""}, {data:"OIGNON BLANC MMP FIL500gx10IF4314 MMP ESPAGNE cal.5070 cat.1", css: ""}, {data:"", css:""}, {data:1, css:"nombre"}, {data:"?", css:""}, {data:56.00, css:"nombre"}, {data:"C", css:""}],
-        [{data: 202, css: "nombre"}, {data:"OIG4", css:""}, {data:"OIGNON BLANC MMP FIL500gx10IF4314 MMP ESPAGNE cal.5070 cat.1", css: ""}, {data:"", css:""}, {data:1, css:"nombre"}, {data:"PLB0", css:""}, {data:2.00, css:"nombre"}, {data:"C", css:""}]
+        [{data: 11, css: ""}, {data:"OIG4", css:""}, {data:"OIGNON BLANC MMP FIL500gx10IF4314 MMP ESPAGNE cal.5070 cat.1", css: ""}, {data:"", css:""}, {data:1, css:"nombre"}, {data:"?", css:""}, {data:56.00, css:"nombre"}, {data:"C", css:""}],
+        [{data: 202, css: ""}, {data:"OIG4", css:""}, {data:"OIGNON BLANC MMP FIL500gx10IF4314 MMP ESPAGNE cal.5070 cat.1", css: ""}, {data:"", css:""}, {data:1, css:"nombre"}, {data:"PLB0", css:""}, {data:2.00, css:"nombre"}, {data:"C", css:""}]
     ],
     row: [
         

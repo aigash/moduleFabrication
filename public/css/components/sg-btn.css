@@ -1,6 +1,6 @@
 /* BUTTONS */
 .sgBtnPrimary, .sgBtnPrimaryT {
-    background-color:var(--dark-blue);
+    background-color:var(--d-blue);
     color:white;
     border:0;
 }
@@ -12,14 +12,15 @@
 }
 .sgBtnBlanc, .sgBtnBlancT {
     background-color:white;
-    color:var(--dark-blue);
-    border:1px solid var(--dark-blue);
+    color:var(--d-blue);
+    border:1px solid var(--d-blue);
 }
 .sgBtnBlanc:hover, .sgBtnBlanc:active, .sgBtnBlancT:target, .sgBtnBlancT:active {
     background-color: var(--blanc-active);
+    border:1px solid transparent;
 }
 .sgBtnCancel, .sgBtnCancelT {
-    background-color:var(--orange-bellon);
+    background-color:var(--o-bellon);
     color:white;
     border:0;
 }
@@ -27,7 +28,7 @@
     background-color:var(--orange-active);
 }
 .sgBtnSecond, .sgBtnSecondT {
-    background-color: var(--light-blue);
+    background-color: var(--l-blue);
     color:white;
     border:0;
 }
@@ -36,7 +37,7 @@
 }
 
 .sgBtnSecond img, .sgBtnSecondT img, .sgBtnBlanc img, .sgBtnBlancT img, .sgBtn img, .sgBtnT img, .sgBtnCancel img, .sgBtnCancelT img {
-    width:25px;
+    max-width:25px;
 }
 
 .sgBtnSecond , .sgBtnSecondT , .sgBtnBlanc , .sgBtnBlancT , .sgBtnPrimary , .sgBtnPrimaryT , .sgBtnCancel , .sgBtnCancelT {

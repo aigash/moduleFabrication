@@ -47,9 +47,14 @@ function renderCustomTable() {
   });
   table.appendChild(tbody);
 
+  const div = document.createElement('div');
+  div.id = 'bloc'+id;
+  div.className = 'sgTableBloc';
+  div.appendChild(table);
+
   // Effacer le contenu précédent et ajouter le nouveau tableau
   this.shadowRoot.innerHTML = '';
-  this.shadowRoot.appendChild(table);
+  this.shadowRoot.appendChild(div);
   const style = document.createElement('style');
   style.textContent = `
     @import url('css/config.css');

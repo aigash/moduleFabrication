@@ -85,11 +85,18 @@ input[type='radio']:focus, input[type='checkbox']:focus {
     width: 35px;
     height:35px;
     border-radius:5px;
-    background-color: var(--dark-blue);
+    background-color: var(--d-blue);
     border:none;
 }
 
 .grpBtn {
     display:flex;
     gap:0.5em;
+}
+
+sg-table {
+    display: block;
+    background-color: white;
+    height: 100%;
+    border-radius: 25px 25px 10px 10px;
 }
