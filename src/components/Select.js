@@ -1,6 +1,10 @@
 import { CustomElement } from '../utils/componentFactory.js';
 
 export default class Select extends CustomElement {
+    static get observedAttributes() {
+        return ['options'];
+    }
+
     render() {
         // On récupère les attributs du composant
         const label = this.getAttribute('label') || '';

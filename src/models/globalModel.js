@@ -46,24 +46,24 @@ export class Global {
     }
 
     updateCuveStock(lot_cod, lfl_lig, poin, cuve_cod) {
-        data = {
+        let data = {
             "request": {
                 "IOjson": {
-                    "lot_cod": lot_cod,
-                    "lfl_lig": lfl_lig,
-                    "poin": poin,
+                    "lot_cod": parseInt(lot_cod),
+                    "lfl_lig": parseInt(lfl_lig),
+                    "poin": parseFloat(poin),
                     "cuve_cod": cuve_cod
                 }
             }
         }
 
-        return this.apiService.post(`${this.apiServiceSuffix}/updateCuveStock`, data)
+        return this.apiService.put(`${this.apiServiceSuffix}/updateCuveStock`, data)
             .then((resp) => {
             //console.log(response);
                 if (resp._errors) {
                     throw response;
                 } else {
-                    return resp?.response?.dsStock?.dsStock?.ttStock || [];
+                    return resp?.response || [];
                 }
             }).catch((error) => {
                 ErrorsHandler.handleError(error);
