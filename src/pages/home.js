@@ -4,18 +4,30 @@ import '../components/Input.js';
 import '../components/InputDouble.js';
 import '../components/Select.js';
 
+import { modalConfirm } from '../utils/lib.js';
+
+import { setDynamicSearch, displayDynamicSearch, hideDynamicSearch } from '../components/DynamicSearch.js';
+
 import { Global } from '../models/globalModel.js';
 
 export class HomePage extends HTMLElement {
     constructor() {
         super();
         this.globalModel = new Global();
+
+        this.modalConfirm = modalConfirm.bind(this);
+
+        this.setDynamicSearch = setDynamicSearch.bind(this);
+        this.displayDynamicSearch = displayDynamicSearch.bind(this);
+        this.hideDynamicSearch = hideDynamicSearch.bind(this);        
     }
 
     connectedCallback() {
         this.render();
         this.getStock();
         this.getAllCuves();
+        this.getEnts();
+        this.getArts();
 
         // Bouton de validation de remplissage de cuve
         document.getElementById('btnRemp').addEventListener('click', () => {
@@ -38,6 +50,20 @@ export class HomePage extends HTMLElement {
             }
 
             this.updateCuveStock(lot, lfl, poin, cuve);
+        });
+
+        this.addEventListener('click', (e) => {
+            this.hideDynamicSearch(e.target);
+        });
+
+        //Suppr Filtres
+        document.getElementById('removeFiltre').addEventListener('click', () => {
+            document.getElementById('entFiltre').value = '';
+            document.getElementById('lotFiltre').value = '';
+            document.getElementById('artFiltre1').value = '';
+            document.getElementById('artFiltre2').value = '';
+
+            this.getStock();
         });
     }
 
@@ -108,6 +134,33 @@ export class HomePage extends HTMLElement {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    async getEnts() {
+        this.entrepots = await this.globalModel.getEnt();
+
+        this.querySelector('#dynamicEntSearch').setAttribute('data', JSON.stringify(this.entrepots));
+
+        document.getElementById('entFiltre').addEventListener('input', (e) => {
+            this.setDynamicSearch(e.target);
+        });
+        document.getElementById('entFiltre').addEventListener('click', (e) => {
+            this.displayDynamicSearch(e.target);
+        });
+    }
+
+    async getArts() {
+        this.articles = await this.globalModel.getArt();
+
+        this.querySelector('#dynamicArtSearch').setAttribute('data', JSON.stringify(this.articles));
+
+        document.getElementById('artFiltre1').addEventListener('input', (e) => {
+            this.setDynamicSearch(e.target);
+        });
+        document.getElementById('artFiltre1').addEventListener('click', (e) => {
+            console.log(e.target);
+            this.displayDynamicSearch(e.target);
+        });
     }
 
     formatTableTheo() {
@@ -183,6 +236,23 @@ export class HomePage extends HTMLElement {
             // On met ent_cod mais en réalité, il s'agit du code de la cuve 
             //this.getStockCuve(this.stockCuve.dsStock.dsStock.ttStock.ent_cod);
             console.log(this.stockCuve);
+            console.log(this.stockCuve.cOutput);
+
+            if (this.stockCuve.cOutput == "ok") {
+                let data = {
+                    msg: `L'article ${this.stockCuve.dsStock.dsStock.ttStock.art_lib} a bien été ajouté à la cuve ${cuve}`,
+                    fonction: 'addCuve'
+                }
+
+                this.modalConfirm(data);
+            } else {
+                $.alert({
+                    title: 'Attention !',
+                    content: "L'article à mettre en cuve doit être différent de celui déjà présent.",
+                    useBootstrap: false,
+                    boxWidth: '30%'
+                });
+            }
         } catch (error) {
             console.log(error);
         }
@@ -192,8 +262,18 @@ export class HomePage extends HTMLElement {
         this.innerHTML = `
             <main id='main' role='main' class='h-full flex flex-col'>
                 <div class='entete bg-white rounded-lg p-3.5 flex gap-3 items-end mb-3'>
-                    <sg-input idname='entFiltre' label='Entrepôt' input='text' inputCss='w-full'></sg-input>
-                    <sg-input-double idname='artFiltre' label='Article' input='text' input2='text' inputCss='w-24' inputCss2='w-96'></sg-input-double>
+                    <div class='flex relative'>
+                        <sg-input idname='entFiltre' label='Entrepôt' input='text' inputCss='w-full' attr='{"lib":"data-search-element", "value":"dynamicEntSearch"}'></sg-input>
+                        <sg-dynamic-search id="dynamicEntSearch" css="sg-dynamic-search" class="dynamic-search" data="" parentInputId="entFiltre" parentInputValue=""></sg-dynamic-search>
+                    </div>
+
+                    <sg-input idname='lotFiltre' label='Lot' input='text' inputCss='w-24'></sg-input>
+
+                    <div class='flex relative'>
+                        <sg-input-double idname='artFiltre' label='Article' input='text' input2='text' inputCss='w-24' inputCss2='w-96' attr='{"lib":"data-search-element", "value":"dynamicArtSearch"}'></sg-input-double>
+                        <sg-dynamic-search id='dynamicArtSearch' css='sg-dynamic-search' class='dynamic-search' double=1 data='' parentInputId='artFiltre1' parentInputValue=""></sg-dynamic-search>
+                    </div>
+
                     <sg-btn idname='removeFiltre' css='h-9 border border-dblueBase rounded w-20 flex justify-center items-center'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b489d" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></sg-btn>
                 </div>
 

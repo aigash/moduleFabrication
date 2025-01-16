@@ -7,7 +7,7 @@ export default class InputDouble extends CustomElement {
         const id = this.getAttribute('idname') || '';
         const input = this.getAttribute('input') || 'text';
         const input2 = this.getAttribute('input2') || 'text';
-        const attr = this.getAttribute('inputAttr') || '';
+        const attr = JSON.parse(this.getAttribute('attr')) || '';
         const inputCss = this.getAttribute('inputCss') || '';
         const inputCss2 = this.getAttribute('inputCss2') || '';
         const css = this.getAttribute('css') || '';
@@ -31,15 +31,17 @@ export default class InputDouble extends CustomElement {
         inputElt.className = `bg-white rounded-l border border-r-transparent h-9 px-2 ${inputCss}`;
         inputElt.id = `${id}1`;
         inputElt.type = input;
+        if (attr) {
+            console.log(attr);
+            inputElt.setAttribute(attr['lib'], attr['value']);
+        }
         doubleContainer.appendChild(inputElt);
 
         const inputElt2 = document.createElement('input');
         inputElt2.className = `bg-white rounded-r border h-9 px-2 ${inputCss2}`;
         inputElt2.id = `${id}2`;
         inputElt2.type = input2;
-        if (attr && attr.length > 0) {
-            inputElt2.setAttribute(attr['lib'], attr['value']);
-        }
+        inputElt2.readOnly = true;
         doubleContainer.appendChild(inputElt2);
 
         container.appendChild(doubleContainer);

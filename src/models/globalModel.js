@@ -56,12 +56,13 @@ export class Global {
                 }
             }
         }
+        console.log(data);
 
         return this.apiService.put(`${this.apiServiceSuffix}/updateCuveStock`, data)
             .then((resp) => {
             //console.log(response);
                 if (resp._errors) {
-                    throw response;
+                    throw resp;
                 } else {
                     return resp?.response || [];
                 }
@@ -76,7 +77,7 @@ export class Global {
             .then((resp) => {
                 //console.log(resp);
                 if (resp._errors) {
-                    throw response;
+                    throw resp;
                 } else {
                     return resp?.response?.dsStock?.dsStock?.ttStock || [];
                 }
@@ -90,10 +91,10 @@ export class Global {
         return this.apiService.get(`${this.apiServiceSuffix}/getEnt`, {})
             .then((resp) => {
             //console.log(response);
-                if (response._errors) {
-                    throw response;
+                if (resp._errors) {
+                    throw resp;
                 } else {
-                    return response?.dsEnt?.dsEnt?.ttEnt || [];
+                    return resp.response?.dsEnt?.dsEnt?.ttEnt || [];
                 }
             }).catch((error) => {
                 ErrorsHandler.handleError(error);
@@ -105,10 +106,10 @@ export class Global {
         return this.apiService.get(`${this.apiServiceSuffix}/getArt`, {})
             .then((resp) => {
             //console.log(response);
-                if (response._errors) {
-                    throw response;
+                if (resp._errors) {
+                    throw resp;
                 } else {
-                    return response?.dsArt?.dsArt?.ttArt || [];
+                    return resp.response?.dsArt?.dsArt?.ttArt || [];
                 }
             }).catch((error) => {
                 ErrorsHandler.handleError(error);
