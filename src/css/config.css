@@ -30,6 +30,13 @@ input:focus, select:focus {
   outline: 0 !important;
 }
 
+select {
+  background: url(../../public/img/icons/select.svg) rgba(255,255,255,0.15) !important;
+  background-position:95% center !important;
+  background-repeat: no-repeat !important;
+  background-size:20px !important;
+}
+
 .disabled {
   background-color:#EFEFEF;
   pointer-events: none;

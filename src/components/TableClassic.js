@@ -51,9 +51,15 @@ export default class Table extends CustomElement {
         // Les lignes
         data.tbody && data.tbody.forEach(row => {
             const trData = row.trData || {};
+            const trAttr = row.attr || {};            
             const tr = document.createElement('tr');
             tr.className = `even:bg-dblueLight odd:bg-white hover:bg-dblueLightHover ${row.css ? row.css : ''}`;
             tr.dataset.id = row.id || "";
+
+            if (trAttr && Object.keys(trAttr).length > 0) {
+                tr.setAttribute(trAttr.lib, trAttr.value);
+            }
+
             tr.dataset.trData = trData;
             // Les cellules
             row.trData && row.trData.forEach(cell => {
@@ -61,7 +67,7 @@ export default class Table extends CustomElement {
                 td.innerHTML = cell.tdData;
                 let tdCss = cell.css || '';
                 tdCss = tdCss.includes('number') ? tdCss.replace('number', 'text-right') : tdCss;
-                td.className = `px-3.5 py-1 ${tdCss}`;
+                td.className = `px-3.5 py-2 ${tdCss}`;
                 tr.appendChild(td);
             });
             tbody.appendChild(tr);

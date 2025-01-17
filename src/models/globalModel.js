@@ -87,6 +87,27 @@ export class Global {
             });
     }
 
+    emptyCuve(cuve) {
+        let data = {
+            "request": {
+                "IOjson": {
+                    "cuve_cod": cuve
+                }
+            }
+        };
+        return this.apiService.put(`${this.apiServiceSuffix}/emptyCuve`, data)
+            .then((resp) => {
+                if (resp._errors) {
+                    throw resp;
+                } else {
+                    return resp?.response?.lOk || [];
+                }
+            }).catch((error) => {
+                ErrorsHandler.handleError(error);
+                throw error;
+            });
+    }
+
     getEnt() {
         return this.apiService.get(`${this.apiServiceSuffix}/getEnt`, {})
             .then((resp) => {

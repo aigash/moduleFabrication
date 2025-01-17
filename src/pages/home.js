@@ -4,7 +4,7 @@ import '../components/Input.js';
 import '../components/InputDouble.js';
 import '../components/Select.js';
 
-import { modalConfirm } from '../utils/lib.js';
+import { modalConfirm, setEventClickAddCuve } from '../utils/lib.js';
 
 import { setDynamicSearch, displayDynamicSearch, hideDynamicSearch } from '../components/DynamicSearch.js';
 
@@ -16,6 +16,7 @@ export class HomePage extends HTMLElement {
         this.globalModel = new Global();
 
         this.modalConfirm = modalConfirm.bind(this);
+        this.setEventClickAddCuve = setEventClickAddCuve.bind(this);
 
         this.setDynamicSearch = setDynamicSearch.bind(this);
         this.displayDynamicSearch = displayDynamicSearch.bind(this);
@@ -30,7 +31,7 @@ export class HomePage extends HTMLElement {
         this.getArts();
 
         // Bouton de validation de remplissage de cuve
-        document.getElementById('btnRemp').addEventListener('click', () => {
+        document.getElementById('btnRemp').addEventListener('click', (e) => {
             let alertElt = document.getElementById('alertPoids');
 
             let cuve = document.getElementById('selectCuveRemp').value;
@@ -43,6 +44,11 @@ export class HomePage extends HTMLElement {
             let lfl = document.getElementById('btnRemp').dataset.lfl;
 
             alertElt.innerHTML = '';
+
+            e.target.classList.add('pulseL');
+            setTimeout(() => {
+                e.target.classList.remove('pulseL');
+            }, 800);
 
             if (parseFloat(poin) > parseFloat(poinMax)) {
                 alertElt.innerHTML = 'Poids max saisissable : ' + poinMax;
@@ -65,28 +71,37 @@ export class HomePage extends HTMLElement {
 
             this.getStock();
         });
+
+        // fin de cuve
+        document.getElementById('cuveFinie').addEventListener('click', (e) => {
+            let cuves = [...document.getElementsByClassName('cuve')];
+            let cuveActive;
+            cuves.forEach(cuve => {
+                if (cuve.classList.contains('selected')) {
+                    cuveActive = cuve.getAttribute('id').split('-')[1];
+                }
+            });
+            this.emptyCuve(cuveActive);
+
+            e.target.classList.add('pulseD');
+            setTimeout(() => {
+                e.target.classList.remove('pulseD');
+            }, 800);
+        });
+
+        // filres
+        document.getElementById('entFiltre').addEventListener('change', () => this.filterTable());
+        document.getElementById('lotFiltre').addEventListener('input', () => this.filterTable());
+        document.getElementById('artFiltre1').addEventListener('change', () => this.filterTable());
+        document.getElementById('artFiltre2').addEventListener('change', () => this.filterTable());
     }
 
     async getStock() {
         try {
             this.stock = await this.globalModel.getStock();
-            this.querySelector('[idname="stockTheorique"]').setAttribute('data', JSON.stringify(this.formatTableTheo()));
+            this.querySelector('[idname="stockTheorique"]').setAttribute('data', JSON.stringify(this.formatTableTheo(this.stock)));
 
-            let btns = [...document.getElementsByClassName('addCuve')];
-            btns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btns.forEach(b => b.parentElement.parentElement.parentElement.classList.remove('!bg-lblueBase'));
-                    let tr = btn.parentElement.parentElement.parentElement;
-                    let lfl = tr.dataset.id;
-                    let code = tr.querySelector('.code').innerHTML;
-                    let article = tr.querySelector('.article').innerHTML;
-                    let lot = tr.querySelector('.lot').innerHTML;
-                    let poin = tr.querySelector('.poin').innerHTML;
-
-                    tr.classList.add('!bg-lblueBase');
-                    this.activateAddCuve(lot, code, article, poin, lfl);
-                });
-            });
+            this.setEventClickAddCuve();
         } catch (error) {
             console.log(error);
         }
@@ -126,11 +141,29 @@ export class HomePage extends HTMLElement {
         }
     }
 
-    async getStockCuve(cuve_cod) {
+    async getStockCuve(cuve_cod, lot = false) {
         try {
             this.stockCuve = await this.globalModel.getCuveStock(cuve_cod);
             //console.log(this.stockCuve);
             this.querySelector('[idname="stockCuve"]').setAttribute('data', JSON.stringify(this.formatTableCuve()));
+
+            if (lot) {
+                const tr = this.querySelector(`[data-lot='${lot}']`);
+                tr.classList.add('!bg-green-300');
+        
+                tr.querySelectorAll('td').forEach(td => td.classList.add('font-semibold'));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async emptyCuve(cuve) {
+        try {
+            this.empty = await this.globalModel.emptyCuve(cuve);
+            if (this.empty == 'true') {
+                this.getStockCuve(cuve);
+            }
         } catch (error) {
             console.log(error);
         }
@@ -158,12 +191,11 @@ export class HomePage extends HTMLElement {
             this.setDynamicSearch(e.target);
         });
         document.getElementById('artFiltre1').addEventListener('click', (e) => {
-            console.log(e.target);
             this.displayDynamicSearch(e.target);
         });
     }
 
-    formatTableTheo() {
+    formatTableTheo(stock) {
         let button = document.createElement('sg-btn');
         button.setAttribute('css', 'bg-dblueBase text-white rounded flex items-center addCuve');
         button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>';
@@ -171,20 +203,20 @@ export class HomePage extends HTMLElement {
         return {
             thead: [
                 { lib: 'Ent' },
+                { lib: 'Lot', css: 'number' },
                 { lib: 'Code', css: 'number' },
                 { lib: 'Article' },
-                { lib: 'Lot', css: 'number' },
                 { lib: 'Stock en kg', css: 'number' },
                 { lib: 'Actions' },
             ],
             tbody: 
-                this.stock && this.stock.map((stock) => ({
+                stock && stock.map((stock) => ({
                     id: stock.lfl_lig,
                     trData: [
                         { tdData: stock.ent_cod, css: 'ent', type: '' },
+                        { tdData: stock.lot_cod, css: 'lot text-right', type: ''},
                         { tdData: stock.art_cod, css: 'code text-right', type: '' },
                         { tdData: stock.art_lib, css: 'article', type: '' },                        
-                        { tdData: stock.lot_cod, css: 'lot text-right', type: ''},
                         { tdData: stock.poin, css: 'poin text-right', type: '' },
                         { tdData: button.outerHTML, css: '', type: 'button' },
                     ]
@@ -202,6 +234,7 @@ export class HomePage extends HTMLElement {
             tbody:
                 this.stockCuve && this.stockCuve.map(stock => ({
                     id: stock.lfl_lig,
+                    attr: { lib:'data-lot', value: stock.lot_cod },
                     trData: [
                         { tdData: stock.lot_cod, css: '', type: '' },
                         { tdData: stock.art_lib, css: '', type: '' },
@@ -209,6 +242,26 @@ export class HomePage extends HTMLElement {
                     ]
                 }))
         }
+    }
+
+    filterTable() {
+        const entValue = document.getElementById('entFiltre').value.toLowerCase();
+        const lotValue = document.getElementById('lotFiltre').value.toLowerCase();
+        const artValue1 = document.getElementById('artFiltre1').value.toLowerCase();
+        const artValue2 = document.getElementById('artFiltre2').value.toLowerCase();
+
+        //console.log(this.stock);
+        const filteredStocks = this.stock.filter(stock => {
+            return (
+                (entValue === '' || stock.ent_lib.toLowerCase().includes(entValue)) &&
+                (lotValue === '' || stock.lot_cod.toString().includes(lotValue)) &&
+                (artValue1 === '' || stock.art_cod.toLowerCase().includes(artValue1)) &&
+                (artValue2 === '' || stock.art_lib.toLowerCase().includes(artValue2))
+            );
+        });
+        const formattedStocks = this.formatTableTheo(filteredStocks);
+        this.querySelector('[idname="stockTheorique"]').setAttribute('data', JSON.stringify(formattedStocks));
+        this.setEventClickAddCuve();
     }
 
     activateAddCuve(lot, code, article, poin, lfl) {
@@ -239,12 +292,25 @@ export class HomePage extends HTMLElement {
             console.log(this.stockCuve.cOutput);
 
             if (this.stockCuve.cOutput == "ok") {
-                let data = {
-                    msg: `L'article ${this.stockCuve.dsStock.dsStock.ttStock.art_lib} a bien été ajouté à la cuve ${cuve}`,
+                /*let data = {
+                    msg: `L'article ${this.stockCuve.dsStock.dsStock.ttStock[0].art_lib} a bien été ajouté à la cuve ${cuve}`,
                     fonction: 'addCuve'
-                }
+                }*/
 
-                this.modalConfirm(data);
+                //this.modalConfirm(data);
+                // refresh des deux tableaux
+                this.getStock();
+                let cuves = document.getElementsByClassName('cuve');
+                [...cuves].forEach(val => {
+                    val.classList.remove('selected');
+                    let cuve_id = val.getAttribute('id').split('-')[1];
+                    if (cuve_id == cuve) {
+                        val.classList.add('selected');
+                    }
+                });
+
+                this.getStockCuve(cuve, lot);
+
             } else {
                 $.alert({
                     title: 'Attention !',
@@ -284,10 +350,10 @@ export class HomePage extends HTMLElement {
                 <div class='p-3.5 bg-white rounded-b-lg border-t border-t-dblueBase mb-3'>
                     <div class='flex justify-between'>
                         <div class='flex gap-3 items-end'>
-                            <sg-select idname='selectCuveRemp' label='Choix de cuve' selectCss='w-32 disabled'></sg-select>
+                            <sg-select idname='selectCuveRemp' label='Choix de cuve' selectCss='w-40'></sg-select>
                             <sg-input idname='lotRemp' label='N° de lot' input='text' inputCss='w-24 disabled'></sg-input>
                             <sg-input-double idname='inputArticleRemp' label='Article' input='text' input2='text' inputCss='w-24 disabled' inputCss2='w-96 disabled'></sg-input-double>
-                            <sg-input idname='poidsRemp' label='Poids' input='number' inputCss='w-32 disabled'></sg-input>
+                            <sg-input idname='poidsRemp' label='Poids' input='number' inputCss='w-32'></sg-input>
                             <p id='alertPoids' class='text-red-500 font-semibold'></p>
                         </div>
                         <div class='flex items-end'>
