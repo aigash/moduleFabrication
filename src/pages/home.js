@@ -146,7 +146,6 @@ export class HomePage extends HTMLElement {
             this.stockCuve = await this.globalModel.getCuveStock(cuve_cod);
             //console.log(this.stockCuve);
             this.querySelector('[idname="stockCuve"]').setAttribute('data', JSON.stringify(this.formatTableCuve()));
-
             if (lot) {
                 const tr = this.querySelector(`[data-lot='${lot}']`);
                 tr.classList.add('!bg-green-300');
