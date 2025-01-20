@@ -32,7 +32,6 @@ export default class InputDouble extends CustomElement {
         inputElt.id = `${id}1`;
         inputElt.type = input;
         if (attr) {
-            console.log(attr);
             inputElt.setAttribute(attr['lib'], attr['value']);
         }
         doubleContainer.appendChild(inputElt);

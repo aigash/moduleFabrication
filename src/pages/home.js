@@ -55,7 +55,22 @@ export class HomePage extends HTMLElement {
                 return;
             }
 
-            this.updateCuveStock(lot, lfl, poin, cuve);
+            $.confirm({
+                title: 'Confirmation',
+                content: `Voulez vous ajouter l'article ${artLib} à la cuve ${cuve} ?`,
+                boxWidth: '40%',
+                useBootstrap: false,
+                buttons: {
+                    Ajouter: {
+                        btnClass: 'bg-dblueBase text-white',
+                        action: () => {
+                            this.updateCuveStock(lot, lfl, poin, cuve);
+                        }
+                    },
+                    Annuler: function() {
+                    }
+                }
+            });            
         });
 
         this.addEventListener('click', (e) => {
@@ -287,15 +302,11 @@ export class HomePage extends HTMLElement {
             this.stockCuve = await this.globalModel.updateCuveStock(lot, lfl, poin, cuve);
             // On met ent_cod mais en réalité, il s'agit du code de la cuve 
             //this.getStockCuve(this.stockCuve.dsStock.dsStock.ttStock.ent_cod);
-            console.log(this.stockCuve);
-            console.log(this.stockCuve.cOutput);
-
             if (this.stockCuve.cOutput == "ok") {
                 /*let data = {
                     msg: `L'article ${this.stockCuve.dsStock.dsStock.ttStock[0].art_lib} a bien été ajouté à la cuve ${cuve}`,
                     fonction: 'addCuve'
                 }*/
-
                 //this.modalConfirm(data);
                 // refresh des deux tableaux
                 this.getStock();

@@ -9,8 +9,6 @@ export function modalConfirm(resp) {
         modalAlert.classList.add('flex');
         modalAlertContent.innerHTML = html + msg;
         setTimeout(() => {
-            //modalAlert.classList.remove('flex');
-            //modalAlert.classList.add('hidden');
             if (fonction) {
                 setTimeout(() => {
                     if (fonction == 'addCuve') {
@@ -41,7 +39,6 @@ export function setEventClickAddCuve() {
     let btns = [...document.getElementsByClassName('addCuve')];
     btns.forEach(btn => {
         btn.addEventListener('click', () => {
-            console.log('test');
             btns.forEach(b => b.parentElement.parentElement.parentElement.classList.remove('!bg-lblueBase'));
             let tr = btn.parentElement.parentElement.parentElement;
             let lfl = tr.dataset.id;
